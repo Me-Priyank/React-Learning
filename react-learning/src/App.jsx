@@ -3,25 +3,43 @@ import {useState} from "react"
 
 
 function App() {
-  const [count , setCount] = useState(0);
 
+  //state
+  const [Todos , setTodos] = useState([{
+    title : "Go to gym at 6 pm",
+    description : "Chest day best day",
+    completed : true
+  },{
+    title : "Stydy web D",
+    description : "webRTC",
+    completed : false
+  }]);
 
+  function addTodo(){
+    setTodos([...Todos,{
+      title: "new todo",
+      description: "new description"
+    }])
+  }
 
   return (
     <div>
-      <CustomBtn count = {count}  setCount = {setCount}></CustomBtn>
+      <button onClick = {addTodo}>Click</button>
+      {Todos.map((e)=>{
+        return <Todoss  title = {e.title}  description = {e.description} ></Todoss>
+      })}
     </div>
   )
      
 }
 
-function CustomBtn(props){
-  function press(){
-    props.setCount(props.count+1);
-  }
 
-return <button onClick={press}>Counter {props.count}</button>
-   
+// component
+function Todoss (props){
+  return <div>
+    <h1>{props.title}</h1>
+    <h2>{props.description}</h2>
+  </div>
   }
 
 
