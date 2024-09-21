@@ -1,46 +1,41 @@
-import {useState} from "react"
-
-
+import { useState } from "react"
 
 function App() {
 
-  //state
-  const [Todos , setTodos] = useState([{
-    title : "Go to gym at 6 pm",
-    description : "Chest day best day",
-    completed : true
-  },{
-    title : "Stydy web D",
-    description : "webRTC",
-    completed : false
-  }]);
+return <div>
+  
+  <More></More>
+  <Header title="2"></Header>
+  <Header title="2"></Header>
+  <Header title="2"></Header>
 
-  function addTodo(){
-    setTodos([...Todos,{
-      title: "new todo",
-      description: "new description"
-    }])
-  }
+</div>
 
-  return (
-    <div>
-      <button onClick = {addTodo}>Click</button>
-      {Todos.map((e)=>{
-        return <Todoss  title = {e.title}  description = {e.description} ></Todoss>
-      })}
-    </div>
-  )
      
 }
 
+function More(){
+  const [title,setTitle]= useState("hi , i'm Priyank");
 
-// component
-function Todoss (props){
-  return <div>
-    <h1>{props.title}</h1>
-    <h2>{props.description}</h2>
-  </div>
+  function addTodo(){
+    setTitle("hi , i'm" + Math.random());
   }
+
+  return <div>
+      <button onClick={addTodo}>c</button>
+  <Header title={title}></Header>
+  </div>
+
+}
+
+function Header ({title}){
+  return <div>
+    {title}
+  </div>
+}
+
+
+
 
 
 export default App
